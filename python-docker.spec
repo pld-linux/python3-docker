@@ -52,38 +52,25 @@ A Python 3 interface to Docker.
 %prep
 %setup -q -n docker-py-%{version}
 
-%if %{with python3}
-set -- *
-install -d py3
-cp -a "$@" py3
-find py3 -name '*.py' | xargs sed -i '1s|^#!python|#!%{__python3}|'
-%endif
-
 %build
 %if %{with python2}
-%{__python} setup.py build %{?with_tests:test}
+%py_build %{?with_tests:test}
 %endif
 
 %if %{with python3}
-cd py3
-%{__python3} setup.py build %{?with_tests:test}
+%py3_build %{?with_tests:test}
 %endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
 %if %{with python2}
-%{__python} setup.py install --skip-build \
-	--optimize=2 \
-	--root=$RPM_BUILD_ROOT
+%py_install
 
 %py_postclean
 %endif
 
 %if %{with python3}
-cd py3
-%{__python3} setup.py install --skip-build \
-	--optimize=2 \
-	--root=$RPM_BUILD_ROOT
+%py3_install
 %endif
 
 %clean
