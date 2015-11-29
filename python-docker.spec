@@ -16,7 +16,7 @@ Source0:	https://pypi.python.org/packages/source/d/docker-py/docker-py-%{version
 URL:		http://docker-py.readthedocs.org/
 #BuildRequires:	docker >= 1.3.3
 BuildRequires:	rpm-pythonprov
-BuildRequires:	rpmbuild(macros) >= 1.219
+BuildRequires:	rpmbuild(macros) >= 1.710
 %if %{with python2}
 #BuildRequires:	python-requests >= 2.2.1
 BuildRequires:	python-setuptools
