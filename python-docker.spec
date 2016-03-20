@@ -7,33 +7,28 @@
 %define 	module	docker
 Summary:	An API client for docker written in Python
 Name:		python-%{module}
-Version:	0.7.1
+Version:	1.7.2
 Release:	1
 License:	Apache v2.0
 Group:		Libraries/Python
 Source0:	https://pypi.python.org/packages/source/d/docker-py/docker-py-%{version}.tar.gz
-# Source0-md5:	3950ac21f7f2a9723759dd95e5f77b89
+# Source0-md5:	b1007b53eabb0e385d52b9a4fd3095b1
+Patch0:		unpin-test-requirements.patch
 URL:		http://docker-py.readthedocs.org/
-#BuildRequires:	docker >= 1.3.3
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.710
 %if %{with python2}
-#BuildRequires:	python-requests >= 2.2.1
 BuildRequires:	python-setuptools
-#BuildRequires:	python-tools
-#BuildRequires:	python-websocket-client >= 0.11.0
 %endif
 %if %{with python3}
 BuildRequires:	python3-devel
-#BuildRequires:	python3-requests
 BuildRequires:	python3-setuptools
-#BuildRequires:	python3-tools
-#BuildRequires:	python3-websocket-client >= 0.11.0
 %endif
-Requires:	docker >= 1.3.3
 Requires:	python-requests >= 2.2.1
 Requires:	python-six >= 1.3.0
 Requires:	python-websocket-client >= 0.11.0
+# Docker can be remote, so suggest only
+Suggests:	docker >= 1.3.3
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -45,12 +40,15 @@ Summary:	An API client for docker written in Python 3
 Requires:	python3-requests
 Requires:	python3-six >= 1.3.0
 Requires:	python3-websocket-client >= 0.11.0
+# Docker can be remote, so suggest only
+Suggests:	docker >= 1.3.3
 
 %description -n python3-%{module}
 A Python 3 interface to Docker.
 
 %prep
 %setup -q -n docker-py-%{version}
+%patch0 -p1
 
 %build
 %if %{with python2}
