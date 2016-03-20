@@ -21,7 +21,7 @@ BuildRequires:	rpmbuild(macros) >= 1.710
 BuildRequires:	python-setuptools
 %endif
 %if %{with python3}
-BuildRequires:	python3-devel
+BuildRequires:	python3-modules
 BuildRequires:	python3-setuptools
 %endif
 Requires:	python-requests >= 2.2.1
