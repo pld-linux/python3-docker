@@ -7,12 +7,12 @@
 %define 	module	docker
 Summary:	An API client for docker written in Python
 Name:		python-%{module}
-Version:	1.7.2
+Version:	1.8.1
 Release:	1
 License:	Apache v2.0
 Group:		Libraries/Python
-Source0:	https://pypi.python.org/packages/source/d/docker-py/docker-py-%{version}.tar.gz
-# Source0-md5:	b1007b53eabb0e385d52b9a4fd3095b1
+Source0:	https://pypi.python.org/packages/d9/af/4c4edd438a1d132a30c7877d929841a6b8e843ee281f41d91500ad7fac65/docker-py-%{version}.tar.gz
+# Source0-md5:	555ed9ed5f9ce36d694aa9449523d2d8
 Patch0:		unpin-test-requirements.patch
 URL:		http://docker-py.readthedocs.org/
 BuildRequires:	rpm-pythonprov
@@ -24,27 +24,26 @@ BuildRequires:	python-setuptools
 BuildRequires:	python3-modules
 BuildRequires:	python3-setuptools
 %endif
-Requires:	python-requests >= 2.2.1
-Requires:	python-six >= 1.3.0
-Requires:	python-websocket-client >= 0.11.0
 # Docker can be remote, so suggest only
 Suggests:	docker >= 1.3.3
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-An API client for docker written in Python.
+A Python 2 library for the Docker Remote API. It does everything the
+`docker` command does, but from within Python - run containers, manage
+them, pull/push images, etc.
 
 %package -n python3-%{module}
 Summary:	An API client for docker written in Python 3
-Requires:	python3-requests
-Requires:	python3-six >= 1.3.0
-Requires:	python3-websocket-client >= 0.11.0
+Group:		Libraries/Python
 # Docker can be remote, so suggest only
 Suggests:	docker >= 1.3.3
 
 %description -n python3-%{module}
-A Python 3 interface to Docker.
+A Python 3 library for the Docker Remote API. It does everything the
+`docker` command does, but from within Python - run containers, manage
+them, pull/push images, etc.
 
 %prep
 %setup -q -n docker-py-%{version}
