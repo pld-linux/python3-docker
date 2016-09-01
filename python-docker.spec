@@ -5,14 +5,15 @@
 %bcond_without	python3 # CPython 3.x module
 
 %define		module	docker
+%define		pypi_name	docker-py
 Summary:	An API client for docker written in Python
 Name:		python-%{module}
-Version:	1.8.1
-Release:	3
+Version:	1.9.0
+Release:	1
 License:	Apache v2.0
 Group:		Libraries/Python
-Source0:	https://pypi.python.org/packages/d9/af/4c4edd438a1d132a30c7877d929841a6b8e843ee281f41d91500ad7fac65/docker-py-%{version}.tar.gz
-# Source0-md5:	555ed9ed5f9ce36d694aa9449523d2d8
+Source0:	https://files.pythonhosted.org/packages/source/d/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+# Source0-md5:	5d0b1736cbe98f3a157acd14a61ba2ef
 Patch0:		unpin-test-requirements.patch
 URL:		http://docker-py.readthedocs.org/
 BuildRequires:	rpm-pythonprov
