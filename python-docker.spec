@@ -10,7 +10,7 @@
 Summary:	An API client for docker written in Python
 Name:		python-%{module}
 Version:	1.10.3
-Release:	1
+Release:	2
 License:	Apache v2.0
 Group:		Libraries/Python
 Source0:	https://files.pythonhosted.org/packages/source/d/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
