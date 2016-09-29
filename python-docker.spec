@@ -4,16 +4,17 @@
 %bcond_without	python2 # CPython 2.x module
 %bcond_without	python3 # CPython 3.x module
 
-%define		module	docker
+%define		module		docker
+%define		egg_name	docker_py
 %define		pypi_name	docker-py
 Summary:	An API client for docker written in Python
 Name:		python-%{module}
-Version:	1.9.0
+Version:	1.10.3
 Release:	1
 License:	Apache v2.0
 Group:		Libraries/Python
 Source0:	https://files.pythonhosted.org/packages/source/d/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
-# Source0-md5:	5d0b1736cbe98f3a157acd14a61ba2ef
+# Source0-md5:	11308f0970b8fb91f43f67191aeca592
 Patch0:		unpin-test-requirements.patch
 URL:		http://docker-py.readthedocs.org/
 BuildRequires:	rpm-pythonprov
@@ -31,7 +32,7 @@ BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 # http://lists.pld-linux.org/mailman/pipermail/pld-devel-en/2016-May/024868.html
-%define		__noautoreq	python3egg\\\\(backports.ssl-match-hostname\\\\) python3egg\\\\(ipaddress\\\\)
+%define		_noautoreq_py3egg	backports.ssl-match-hostname ipaddress
 
 %description
 A Python 2 library for the Docker Remote API. It does everything the
@@ -82,7 +83,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc LICENSE README.md
 %{py_sitescriptdir}/%{module}
-%{py_sitescriptdir}/docker_py-%{version}-py*.egg-info
+%{py_sitescriptdir}/%{egg_name}-%{version}-py*.egg-info
 %endif
 
 %if %{with python3}
@@ -90,5 +91,5 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc LICENSE README.md
 %{py3_sitescriptdir}/%{module}
-%{py3_sitescriptdir}/docker_py-%{version}-py*.egg-info
+%{py3_sitescriptdir}/%{egg_name}-%{version}-py*.egg-info
 %endif
