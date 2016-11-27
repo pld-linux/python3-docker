@@ -9,12 +9,12 @@
 %define		pypi_name	docker-py
 Summary:	An API client for docker written in Python
 Name:		python-%{module}
-Version:	1.10.3
-Release:	2
+Version:	1.10.6
+Release:	1
 License:	Apache v2.0
 Group:		Libraries/Python
 Source0:	https://files.pythonhosted.org/packages/source/d/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
-# Source0-md5:	11308f0970b8fb91f43f67191aeca592
+# Source0-md5:	6c8b8309dfe9610edb2170bb2d807bd7
 Patch0:		unpin-requirements.patch
 URL:		http://docker-py.readthedocs.org/
 BuildRequires:	rpm-pythonprov

@@ -11,14 +11,3 @@
 +coverage>=3.7.1
 +pytest-cov>=2.1.0
 +flake8>=2.4.1
---- docker-py-1.10.3/setup.py~	2016-09-16 21:48:17.000000000 +0300
-+++ docker-py-1.10.3/setup.py	2016-09-29 22:56:01.446317927 +0300
-@@ -9,7 +9,7 @@
- SOURCE_DIR = os.path.join(ROOT_DIR)
- 
- requirements = [
--    'requests >= 2.5.2, < 2.11',
-+    'requests >= 2.5.2',
-     'six >= 1.4.0',
-     'websocket-client >= 0.32.0',
-     'docker-pycreds >= 0.2.1'
