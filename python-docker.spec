@@ -16,6 +16,7 @@ Group:		Libraries/Python
 Source0:	https://files.pythonhosted.org/packages/source/d/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 # Source0-md5:	6c8b8309dfe9610edb2170bb2d807bd7
 Patch0:		unpin-requirements.patch
+Patch1:		unicode.patch
 URL:		http://docker-py.readthedocs.org/
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.710
@@ -53,6 +54,7 @@ them, pull/push images, etc.
 %prep
 %setup -q -n docker-py-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %build
 %if %{with python2}
