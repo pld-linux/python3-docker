@@ -21,10 +21,12 @@ BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.710
 %if %{with python2}
 BuildRequires:	python-setuptools
+BuildConflicts:	python-docker < 2.0
 %endif
 %if %{with python3}
 BuildRequires:	python3-modules
 BuildRequires:	python3-setuptools
+BuildConflicts:	python3-docker < 2.0
 %endif
 # Docker can be remote, so suggest only
 Suggests:	docker >= 1.3.3
