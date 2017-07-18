@@ -6,17 +6,16 @@
 
 %define		module		docker
 %define		egg_name	docker_py
-%define		pypi_name	docker-py
-Summary:	An API client for docker written in Python
+%define		pypi_name	docker
+Summary:	A Python library for the Docker Engine API
 Name:		python-%{module}
-Version:	1.10.6
-Release:	2
+Version:	2.4.2
+Release:	1
 License:	Apache v2.0
 Group:		Libraries/Python
 Source0:	https://files.pythonhosted.org/packages/source/d/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
-# Source0-md5:	6c8b8309dfe9610edb2170bb2d807bd7
+# Source0-md5:	df46a59fbc383dc99fb031ec823d5638
 Patch0:		unpin-requirements.patch
-Patch1:		unicode.patch
 URL:		http://docker-py.readthedocs.org/
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.710
@@ -36,9 +35,9 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_noautoreq_py3egg	backports.ssl-match-hostname ipaddress
 
 %description
-A Python 2 library for the Docker Remote API. It does everything the
-`docker` command does, but from within Python - run containers, manage
-them, pull/push images, etc.
+A Python 2 library for the Docker Engine API. It lets you do anything
+the `docker` command does, but from within Python apps - run
+containers, manage containers, manage Swarms, etc.
 
 %package -n python3-%{module}
 Summary:	An API client for docker written in Python 3
@@ -47,14 +46,13 @@ Group:		Libraries/Python
 Suggests:	docker >= 1.3.3
 
 %description -n python3-%{module}
-A Python 3 library for the Docker Remote API. It does everything the
-`docker` command does, but from within Python - run containers, manage
-them, pull/push images, etc.
+A Python 3 library for the Docker Engine API. It lets you do anything
+the `docker` command does, but from within Python apps - run
+containers, manage containers, manage Swarms, etc.
 
 %prep
-%setup -q -n docker-py-%{version}
+%setup -q -n %{pypi_name}-%{version}
 %patch0 -p1
-%patch1 -p1
 
 %build
 %if %{with python2}
