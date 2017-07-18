@@ -20,11 +20,14 @@ URL:		http://docker-py.readthedocs.org/
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.710
 %if %{with python2}
+BuildRequires:	python-modules
+BuildRequires:	python-pip
 BuildRequires:	python-setuptools
 BuildConflicts:	python-docker < 2.0
 %endif
 %if %{with python3}
 BuildRequires:	python3-modules
+BuildRequires:	python3-pip
 BuildRequires:	python3-setuptools
 BuildConflicts:	python3-docker < 2.0
 %endif
