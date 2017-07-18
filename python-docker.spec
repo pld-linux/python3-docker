@@ -5,7 +5,7 @@
 %bcond_without	python3 # CPython 3.x module
 
 %define		module		docker
-%define		egg_name	docker_py
+%define		egg_name	docker
 %define		pypi_name	docker
 Summary:	A Python library for the Docker Engine API
 Name:		python-%{module}
@@ -72,7 +72,6 @@ containers, manage containers, manage Swarms, etc.
 rm -rf $RPM_BUILD_ROOT
 %if %{with python2}
 %py_install
-
 %py_postclean
 %endif
 
