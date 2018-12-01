@@ -1,15 +1,47 @@
---- docker-3.1.0/test-requirements.txt~	2017-10-27 00:11:50.000000000 +0300
-+++ docker-3.1.0/test-requirements.txt	2018-02-26 20:01:57.334881524 +0200
-@@ -1,6 +1,6 @@
--coverage==3.7.1
--flake8==3.4.1
--mock==1.0.1
--pytest==2.9.1
--pytest-cov==2.1.0
--pytest-timeout==1.2.1
-+coverage>=3.7.1
-+flake8>=3.4.1
-+mock>=1.0.1
-+pytest-cov>=2.1.0
-+pytest>=2.9.1
-+pytest-timeout>=1.2.1
+--- docker-3.6.0.orig/requirements.txt	2018-12-01 15:19:00.028975519 +0100
++++ docker-3.6.0/requirements.txt	2018-12-01 15:20:55.230646876 +0100
+@@ -1,21 +1,21 @@
+-appdirs==1.4.3
+-asn1crypto==0.22.0
+-backports.ssl-match-hostname==3.5.0.1
+-cffi==1.10.0
+-cryptography==1.9; python_version == '3.3'
+-cryptography==2.3; python_version > '3.3'
+-docker-pycreds==0.3.0
+-enum34==1.1.6
+-idna==2.5
+-ipaddress==1.0.18
+-packaging==16.8
+-paramiko==2.4.2
+-pycparser==2.17
+-pyOpenSSL==18.0.0
+-pyparsing==2.2.0
+-pypiwin32==219; sys_platform == 'win32' and python_version < '3.6'
+-pypiwin32==223; sys_platform == 'win32' and python_version >= '3.6'
+-requests==2.20.0
+-six==1.10.0
+-websocket-client==0.40.0
+-urllib3==1.21.1; python_version == '3.3'
+\ No newline at end of file
++appdirs>=1.4.3
++asn1crypto>=0.22.0
++backports.ssl-match-hostname>=3.5.0.1
++cffi>=1.10.0
++cryptography>=1.9; python_version == '3.3'
++cryptography>=2.3; python_version > '3.3'
++docker-pycreds>=0.3.0
++enum34>=1.1.6
++idna>=2.5
++ipaddress>=1.0.18
++packaging>=16.8
++paramiko>=2.4.2
++pycparser>=2.17
++pyOpenSSL>=18.0.0
++pyparsing>=2.2.0
++pypiwin32>=219; sys_platform == 'win32' and python_version < '3.6'
++pypiwin32>=223; sys_platform == 'win32' and python_version >= '3.6'
++requests>=2.20.0
++six>=1.10.0
++websocket-client>=0.40.0
++urllib3>=1.21.1; python_version == '3.3'
+\ No newline at end of file
