@@ -33,6 +33,8 @@ BuildConflicts:	python3-docker < 2.0
 %endif
 # Docker can be remote, so suggest only
 Suggests:	docker >= 1.3.3
+# optional dep for ssh support (required by docker-compose)
+Suggests:	python-paramiko >= 2.4.2
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -49,6 +51,8 @@ Summary:	An API client for docker written in Python 3
 Group:		Libraries/Python
 # Docker can be remote, so suggest only
 Suggests:	docker >= 1.3.3
+# optional dep for ssh support (required by docker-compose)
+Suggests:	python3-paramiko >= 2.4.2
 
 %description -n python3-%{module}
 A Python 3 library for the Docker Engine API. It lets you do anything
