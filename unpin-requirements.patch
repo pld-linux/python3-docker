@@ -1,13 +1,11 @@
---- docker-3.6.0.orig/requirements.txt	2018-12-01 15:19:00.028975519 +0100
-+++ docker-3.6.0/requirements.txt	2018-12-01 15:20:55.230646876 +0100
-@@ -1,21 +1,21 @@
+--- docker-4.2.1/requirements.txt.orig	2020-06-03 17:19:49.047177232 +0200
++++ docker-4.2.1/requirements.txt	2020-06-03 17:21:15.051474069 +0200
+@@ -1,19 +1,19 @@
 -appdirs==1.4.3
 -asn1crypto==0.22.0
 -backports.ssl-match-hostname==3.5.0.1
 -cffi==1.10.0
--cryptography==1.9; python_version == '3.3'
--cryptography==2.3; python_version > '3.3'
--docker-pycreds==0.4.0
+-cryptography==2.3
 -enum34==1.1.6
 -idna==2.5
 -ipaddress==1.0.18
@@ -20,16 +18,13 @@
 -pypiwin32==223; sys_platform == 'win32' and python_version >= '3.6'
 -requests==2.20.0
 -six==1.10.0
--websocket-client==0.40.0
--urllib3==1.21.1; python_version == '3.3'
-\ No newline at end of file
+-urllib3==1.24.3
+-websocket-client==0.56.0
 +appdirs>=1.4.3
 +asn1crypto>=0.22.0
 +backports.ssl-match-hostname>=3.5.0.1
 +cffi>=1.10.0
-+cryptography>=1.9; python_version == '3.3'
-+cryptography>=2.3; python_version > '3.3'
-+docker-pycreds>=0.4.0
++cryptography>=2.3
 +enum34>=1.1.6
 +idna>=2.5
 +ipaddress>=1.0.18
@@ -42,6 +37,5 @@
 +pypiwin32>=223; sys_platform == 'win32' and python_version >= '3.6'
 +requests>=2.20.0
 +six>=1.10.0
-+websocket-client>=0.40.0
-+urllib3>=1.21.1; python_version == '3.3'
-\ No newline at end of file
++urllib3>=1.24.3
++websocket-client>=0.56.0
