@@ -9,12 +9,12 @@
 %define		pypi_name	docker
 Summary:	A Python library for the Docker Engine API
 Name:		python-%{module}
-Version:	4.4.2
+Version:	4.4.3
 Release:	1
 License:	Apache v2.0
 Group:		Libraries/Python
 Source0:	https://files.pythonhosted.org/packages/source/d/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
-# Source0-md5:	15f85bc4011bdc7c39641adb5463f547
+# Source0-md5:	131598f54dce23f130aba0dfd38ae441
 Patch0:		unpin-requirements.patch
 URL:		http://docker-py.readthedocs.org/
 BuildRequires:	rpm-pythonprov
