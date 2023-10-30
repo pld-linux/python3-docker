@@ -1,13 +1,14 @@
 #
 # Conditional build:
-%bcond_with	tests	# do not perform "make test"
+%bcond_with	tests	# unit/integration tests
 %bcond_without	python2 # CPython 2.x module
 %bcond_without	python3 # CPython 3.x module
 
 %define		module		docker
 %define		egg_name	docker
 %define		pypi_name	docker
-Summary:	A Python library for the Docker Engine API
+Summary:	A Python 2 library for the Docker Engine API
+Summary(pl.UTF-8):	Biblioteka Pythona 2 do API silnika Docker
 Name:		python-%{module}
 Version:	5.0.0
 Release:	4
@@ -20,15 +21,23 @@ URL:		http://docker-py.readthedocs.org/
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.710
 %if %{with python2}
-BuildRequires:	python-modules
-BuildRequires:	python-pip
+BuildRequires:	python-modules >= 1:3.6
 BuildRequires:	python-setuptools
+%if %{with tests}
+BuildRequires:	python-pytest >= 4.3.1
+BuildRequires:	python-requests >= 2.18.1
+BuildRequires:	python-websocket-client >= 0.32.0
+%endif
 BuildConflicts:	python-docker < 2.0
 %endif
 %if %{with python3}
-BuildRequires:	python3-modules
-BuildRequires:	python3-pip
+BuildRequires:	python3-modules >= 1:3.6
 BuildRequires:	python3-setuptools
+%if %{with tests}
+BuildRequires:	python3-pytest >= 4.3.1
+BuildRequires:	python3-requests >= 2.18.1
+BuildRequires:	python3-websocket-client >= 0.32.0
+%endif
 BuildConflicts:	python3-docker < 2.0
 %endif
 # Docker can be remote, so suggest only
@@ -42,12 +51,18 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_noautoreq_py3egg	backports.ssl-match-hostname ipaddress
 
 %description
-A Python 2 library for the Docker Engine API. It lets you do anything
+A Python library for the Docker Engine API. It lets you do anything
 the `docker` command does, but from within Python apps - run
 containers, manage containers, manage Swarms, etc.
 
+%description -l pl.UTF-8
+Biblioteka Pythona do API silnika Docker. Pozwala zrobić wszystko to,
+co polecenie "docker", ale z poziomu aplikacji w Pythonie: uruchamiać
+kontenery, zarządzać nimi, zarządzać Swarmami itp.
+
 %package -n python3-%{module}
-Summary:	An API client for docker written in Python 3
+Summary:	A Python 3 library for the Docker Engine API
+Summary(pl.UTF-8):	Biblioteka Pythona 3 do API silnika Docker
 Group:		Libraries/Python
 # Docker can be remote, so suggest only
 Suggests:	docker >= 1.3.3
@@ -55,9 +70,14 @@ Suggests:	docker >= 1.3.3
 Suggests:	python3-paramiko >= 2.4.2
 
 %description -n python3-%{module}
-A Python 3 library for the Docker Engine API. It lets you do anything
+A Python library for the Docker Engine API. It lets you do anything
 the `docker` command does, but from within Python apps - run
 containers, manage containers, manage Swarms, etc.
+
+%description -n python3-%{module} -l pl.UTF-8
+Biblioteka Pythona do API silnika Docker. Pozwala zrobić wszystko to,
+co polecenie "docker", ale z poziomu aplikacji w Pythonie: uruchamiać
+kontenery, zarządzać nimi, zarządzać Swarmami itp.
 
 %prep
 %setup -q -n %{pypi_name}-%{version}
@@ -65,11 +85,22 @@ containers, manage containers, manage Swarms, etc.
 
 %build
 %if %{with python2}
-%py_build %{?with_tests:test}
+%py_build
+
+%if %{with tests}
+PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 \
+PYTHONPATH=$(pwd) \
+%{__python} -m pytest tests -W ignore
+%endif
 %endif
 
 %if %{with python3}
-%py3_build %{?with_tests:test}
+%py3_build
+
+%if %{with tests}
+PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 \
+%{__python} -m pytest tests
+%endif
 %endif
 
 %install
