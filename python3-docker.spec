@@ -9,7 +9,7 @@ Summary:	A Python 3 library for the Docker Engine API
 Summary(pl.UTF-8):	Biblioteka Pythona 3 do API silnika Docker
 Name:		python3-%{module}
 Version:	5.0.3
-Release:	1
+Release:	2
 License:	Apache v2.0
 Group:		Libraries/Python
 Source0:	https://files.pythonhosted.org/packages/source/d/docker/%{pypi_name}-%{version}.tar.gz
@@ -28,6 +28,7 @@ BuildRequires:	python3-websocket-client >= 0.32.0
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
 BuildConflicts:	python3-docker < 2.0
+Conflicts:	python3-requests >= 2.32.0
 # Docker can be remote, so suggest only
 Suggests:	docker >= 1.3.3
 # optional dep for ssh support (required by docker-compose)
