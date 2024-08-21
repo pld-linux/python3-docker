@@ -17,7 +17,6 @@ BuildRequires:	python3-setuptools >= 1:54.1.1
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
 BuildConflicts:	python3-docker < 2.0
-Conflicts:	python3-requests >= 2.32.0
 # Docker can be remote, so suggest only
 Suggests:	docker >= 1.3.3
 # optional dep for ssh support (required by docker-compose)
