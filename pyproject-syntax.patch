@@ -1,0 +1,11 @@
+--- docker-7.1.0/pyproject.toml.orig	2024-08-21 21:56:44.844857984 +0200
++++ docker-7.1.0/pyproject.toml	2024-08-21 21:58:13.939082401 +0200
+@@ -7,7 +7,7 @@
+ dynamic = ["version"]
+ description = "A Python library for the Docker Engine API."
+ readme = "README.md"
+-license = "Apache-2.0"
++license.text = "Apache-2.0"
+ requires-python = ">=3.8"
+ maintainers = [
+     { name = "Docker Inc.", email = "no-reply@docker.com" },

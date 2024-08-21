@@ -1,30 +1,19 @@
-#
-# Conditional build:
-%bcond_without	tests	# unit tests
-
 %define		module		docker
 %define		egg_name	docker
 %define		pypi_name	docker
 Summary:	A Python 3 library for the Docker Engine API
 Summary(pl.UTF-8):	Biblioteka Pythona 3 do API silnika Docker
 Name:		python3-%{module}
-Version:	5.0.3
-Release:	2
+Version:	7.1.0
+Release:	1
 License:	Apache v2.0
 Group:		Libraries/Python
 Source0:	https://files.pythonhosted.org/packages/source/d/docker/%{pypi_name}-%{version}.tar.gz
-# Source0-md5:	33314b2c98a1a4e3b57e7068811007c6
+# Source0-md5:	04e92a7b6dc8b88dde3c7cca6850b277
+Patch0:		pyproject-syntax.patch
 URL:		http://docker-py.readthedocs.org/
 BuildRequires:	python3-modules >= 1:3.6
 BuildRequires:	python3-setuptools >= 1:54.1.1
-%if %{with tests}
-BuildRequires:	python3-paramiko >= 2.4.2
-BuildRequires:	python3-pytest >= 4.3.1
-BuildRequires:	python3-pytest-timeout >= 1.3.3
-BuildRequires:	python3-requests >= 2.18.1
-BuildRequires:	python3-urllib3 >= 1.24.3
-BuildRequires:	python3-websocket-client >= 0.32.0
-%endif
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
 BuildConflicts:	python3-docker < 2.0
@@ -48,16 +37,14 @@ kontenery, zarządzać nimi, zarządzać Swarmami itp.
 
 %prep
 %setup -q -n %{pypi_name}-%{version}
+%patch0 -p1
+cat > setup.py <<EOF
+from setuptools import setup
+setup(version='%{version}')
+EOF
 
 %build
 %py3_build
-
-%if %{with tests}
-# only unit tests (ssh and integration tests probably require docker running)
-PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 \
-PYTEST_PLUGINS=pytest_timeout \
-%{__python3} -m pytest tests/unit -k 'not TCPSocketStreamTest'
-%endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
