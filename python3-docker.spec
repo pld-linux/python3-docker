@@ -36,7 +36,7 @@ kontenery, zarządzać nimi, zarządzać Swarmami itp.
 
 %prep
 %setup -q -n %{pypi_name}-%{version}
-%patch0 -p1
+%patch -P 0 -p1
 cat > setup.py <<EOF
 from setuptools import setup
 setup(version='%{version}')
