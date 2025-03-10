@@ -5,7 +5,7 @@ Summary:	A Python 3 library for the Docker Engine API
 Summary(pl.UTF-8):	Biblioteka Pythona 3 do API silnika Docker
 Name:		python3-%{module}
 Version:	7.1.0
-Release:	1
+Release:	2
 License:	Apache v2.0
 Group:		Libraries/Python
 Source0:	https://files.pythonhosted.org/packages/source/d/docker/%{pypi_name}-%{version}.tar.gz
